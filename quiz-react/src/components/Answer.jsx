@@ -1,4 +1,3 @@
-
 function Answer() {
     return (
         <div className="answer">
@@ -6,6 +5,6 @@ function Answer() {
             <div className="answer-text">Text of the answer</div>
         </div>
     )
-}
+};
 
-export default Answer
+export default Answer;

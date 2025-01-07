@@ -15,7 +15,7 @@ const reducer = (state, action) => {
         };
     }
     return state;
-}
+};
 
 function Quiz() {
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -29,6 +29,6 @@ function Quiz() {
             </div>
         </div>
     )
-}
+};
 
-export default Quiz
+export default Quiz;

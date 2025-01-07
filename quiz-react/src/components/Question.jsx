@@ -12,6 +12,6 @@ function Question() {
             </div>
         </div>
     )
-}
+};
 
-export default Question
+export default Question;
