@@ -6,17 +6,20 @@ import data from '../data';
 const initialState = {
     questions: data,
     currentQuestionIndex: 0,
+    showResults: false,
 };
 // The function manages state transitions based on the actions it receives.
 const reducer = (state, action) => {
     console.log("reducer", state, action);
     // Check if we click the button
     if (action.type === "NEXT_QUESTION") {
-        // Keep all previous state values
+        const showResults = state.currentQuestionIndex === state.questions.length - 1;
+        const currentQuestionIndex = showResults ? state.currentQuestionIndex : state.currentQuestionIndex + 1;        
         return {
-            ...state,
-            // Increment the question index
-            currentQuestionIndex: state.currentQuestionIndex + 1,
+            // Keep all previous state values  
+            ...state,         
+            currentQuestionIndex,
+            showResults,
         };
     }
     // If no matching action, return the current state unchanged
