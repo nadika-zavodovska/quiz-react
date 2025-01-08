@@ -10,10 +10,10 @@ function Question() {
         <div>
             <div className="question">{currentQuestion.question}</div>
             <div className="answers">
-                <Answer />
-                <Answer />
-                <Answer />
-                <Answer />
+                {quizState.answers.map((answer, index) => (
+                    // It's better don't use index, use id for larger projects where we can delete index
+                    <Answer key={index} answerText={answer} />
+                ))}
             </div>
         </div>
     )
