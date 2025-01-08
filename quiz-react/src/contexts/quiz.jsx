@@ -14,14 +14,18 @@ const reducer = (state, action) => {
     // Check if we click the button
     if (action.type === "NEXT_QUESTION") {
         const showResults = state.currentQuestionIndex === state.questions.length - 1;
-        const currentQuestionIndex = showResults ? state.currentQuestionIndex : state.currentQuestionIndex + 1;        
+        const currentQuestionIndex = showResults ? state.currentQuestionIndex : state.currentQuestionIndex + 1;
         return {
             // Keep all previous state values  
-            ...state,         
+            ...state,
             currentQuestionIndex,
             showResults,
         };
     }
+    if (action.type === "RESTART") {
+        return initialState;
+    }
+
     // If no matching action, return the current state unchanged
     return state;
 };

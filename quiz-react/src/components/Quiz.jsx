@@ -8,12 +8,22 @@ function Quiz() {
     
     return (
         <div className="quiz">
-            <div>
+            {quizState.showResults && (
+                <div className="results">
+                    <div className="congratulations">Congratulations</div>
+                    <div className="result-info">
+                        <div>You've completed the quiz.</div>
+                        <div>You've got 4 of 8</div>
+                        <button className="next-button" onClick={() => dispatch({ type: "RESTART" })}>Restart</button>
+                    </div>
+                </div>
+            )}
+            {!quizState.showResults && (<div>
                 <div className="score">Question {quizState.currentQuestionIndex + 1}/{quizState.questions.length}</div>
                 <Question />
                 {/* Button to move to the next question, dispatch function take as a argument action (object)  */}
                 <button className="next-button" onClick={() => dispatch({ type: "NEXT_QUESTION" })}>Next question</button>
-            </div>
+            </div>)}
         </div>
     )
 };
