@@ -1,12 +1,14 @@
-import { useContext } from "react";
-import { QuizContext } from "../contexts/quiz";
+function Answer({ answerText, onSelectAnswer, index, currentAnswer, correctAnswer }) {
 
-function Answer({answerText}) {
-    const [quizState, dispatch] = useContext(QuizContext);
-    
-    return (        
-        <div className="answer">
-            <div className="answer-letter">A</div>
+    const letterMapping = ["A", "B", "C", "D"];
+    const isCorrectAnswer = currentAnswer && answerText === correctAnswer;
+    const isWrongAnswer = currentAnswer === answerText && currentAnswer !== correctAnswer;
+    const correctAnswerClass = isCorrectAnswer ? 'correct-answer' : ""
+    const wrongAnswerClass = isWrongAnswer ? 'wrong-answer' : "";
+    const disablesClass = currentAnswer ? "disabled-answer" : "";
+    return (
+        <div className={`answer ${correctAnswerClass} ${wrongAnswerClass} ${disablesClass}`} onClick={() => onSelectAnswer(answerText)}>
+            <div className="answer-letter">{letterMapping[index]}</div>
             <div className="answer-text">{answerText}</div>
         </div>
     )
