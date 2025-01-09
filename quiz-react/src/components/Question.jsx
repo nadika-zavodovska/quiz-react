@@ -3,20 +3,31 @@ import { QuizContext } from "../contexts/quiz";
 import Answer from "./Answer";
 
 function Question() {
-    // Get quiz state and dispatch function. The dispatch function used to send actions to update the state.
+    // Access quiz state and the dispatch function for state updates.
     const [quizState, dispatch] = useContext(QuizContext);
+    // Get the current question object.
     const currentQuestion = quizState.questions[quizState.currentQuestionIndex];
     return (
         <div>
+            {/* Display the question text */}
             <div className="question">{currentQuestion.question}</div>
+            {/* Render answer options */}
             <div className="answers">
                 {quizState.answers.map((answer, index) => (
-                    // It's better don't use index, use id for larger projects where we can delete index
-                    <Answer key={index} index={index} answerText={answer} correctAnswer={currentQuestion.correctAnswer} currentAnswer={quizState.currentAnswer} onSelectAnswer={(answerText) => dispatch({ type: 'SELECT_ANSWER', payload: answerText })} />
+                    <Answer
+                        answerText={answer}
+                        key={index}
+                        index={index}
+                        currentAnswer={quizState.currentAnswer}
+                        correctAnswer={currentQuestion.correctAnswer}
+                        onSelectAnswer={(answerText) =>
+                            dispatch({ type: "SELECT_ANSWER", payload: answerText })
+                        }
+                    />
                 ))}
             </div>
         </div>
-    )
+    );
 };
 
 export default Question;
