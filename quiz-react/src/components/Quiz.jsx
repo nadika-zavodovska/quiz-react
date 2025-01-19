@@ -22,22 +22,19 @@ function Quiz() {
             });
     });
     return (
-        <div className="quiz">
+        <div className='quiz'>
             {/* Show results if the quiz is completed */}
             {quizState.showResults && (
-                <div className="results">
-                    <div className="congratulations">Congratulations</div>
-                    <div className="results-info">
+                <div className='results'>
+                    <div className='congratulations'>Congratulations</div>
+                    <div className='results-info'>
                         <div>You have completed the quiz.</div>
                         <div>
-                            You've got {quizState.correctAnswersCount} of{" "}
+                            You&apos;ve got {quizState.correctAnswersCount} of{" "}
                             {quizState.questions.length}
                         </div>
                     </div>
-                    <div
-                        className="next-button"
-                        onClick={() => dispatch({ type: "RESTART" })}
-                    >
+                    <div className='next-button' onClick={() => dispatch({ type: "RESTART" })}>
                         Restart
                     </div>
                 </div>
@@ -45,21 +42,19 @@ function Quiz() {
             {/* Display the current question and navigation controls if the quiz is ongoing */}
             {!quizState.showResults && quizState.questions.length > 0 && (
                 <div>
-                    <div className="score">
-                        Question {quizState.currentQuestionIndex + 1}/
-                        {quizState.questions.length}
+                    <div className='score'>
+                        Question {quizState.currentQuestionIndex + 1}/{quizState.questions.length}
                     </div>
                     <Question />
                     <div
-                        className="next-button"
-                        onClick={() => dispatch({ type: "NEXT_QUESTION" })}
-                    >
+                        className='next-button'
+                        onClick={() => dispatch({ type: "NEXT_QUESTION" })}>
                         Next question
                     </div>
                 </div>
             )}
         </div>
     );
-};
+}
 
 export default Quiz;
